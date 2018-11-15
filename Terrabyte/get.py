@@ -1,7 +1,7 @@
 from pymongo import MongoClient # connection
-
+import json
 # create client
-client = MongoClient('endpoint')
+client = MongoClient(json.load(open('./config.json'))['endpoint'])
 
 # API call for visualizing the whole mongo db
 def visualize_mongo():

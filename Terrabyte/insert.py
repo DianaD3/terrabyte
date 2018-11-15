@@ -1,8 +1,9 @@
 from pymongo import MongoClient # connection
 from datetime import datetime # time
+import json
 
 # create the mongo client
-client = MongoClient('endpoint')
+client = MongoClient(json.load(open('./config.json'))['endpoint'])
 
 # API call for inserting a single data point
 def insert_data_point(latitude, longitude, value, layer):
