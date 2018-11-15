@@ -10,7 +10,7 @@
 
 ### API
 
-[POST] Add pinpoint array
+**POST** Add pinpoint array
 
 ```
 {
@@ -37,7 +37,7 @@
 }
 ```
 
-[GET] Get pinpoint array based on layer
+**GET** Get pinpoint array based on layer
 
 ### Web Interface
 ### Advanced Analysis
