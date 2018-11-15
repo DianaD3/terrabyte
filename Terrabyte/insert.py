@@ -23,3 +23,11 @@ def insert_data_point(latitude, longitude, value, layer):
     }
     # insert the data
     col.insert_one(data)
+
+def insert_many_points(points):
+    # connect to a database
+    db = client['admin']
+    # select a table (if non existent it will automatically create one)
+    col = db['test']
+    # insert the data
+    col.insert_many(points)
