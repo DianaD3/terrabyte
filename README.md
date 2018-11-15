@@ -10,9 +10,32 @@
 
 ### API
 
-[POST] add pinpoint array
+[POST] Add pinpoint array
 
-[GET] get pinpoint array based on layer
+{
+  pinpoints: [
+    {
+      timestamp: '2018-11-15',
+      location: {
+        lat: 44.439663,
+        long: 26.096306
+      },
+      value: 30,
+      layer: 'air_temperature'
+    },
+    {
+      timestamp: '2018-11-15',
+      location: {
+        lat: 46.770439,
+        long: 23.591423
+      },
+      value: 27,
+      layer: 'air_temperature'
+    }
+  ]
+}
+
+[GET] Get pinpoint array based on layer
 
 ### Web Interface
 ### Advanced Analysis
