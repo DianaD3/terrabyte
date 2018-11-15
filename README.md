@@ -12,6 +12,7 @@
 
 [POST] Add pinpoint array
 
+```
 {
   pinpoints: [
     {
@@ -34,6 +35,7 @@
     }
   ]
 }
+```
 
 [GET] Get pinpoint array based on layer
 
