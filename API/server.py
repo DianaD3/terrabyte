@@ -76,9 +76,7 @@ def forecasting():
 @app.route('/ml/anomaly', methods=["POST"])
 def anomaly():
     data = request.get_json()['input']
-    output = ml.anomaly_detection(data)
-    output = list(output)
-    print(output)
+    output = ml.anomaly_detection(data).astype(int)
     return prepare.data_to_json({
         'output': output
     })
