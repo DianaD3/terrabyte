@@ -42,3 +42,22 @@ def prepare_time(year, month, day, hour=None, minute=None, second=None):
 # function to translate BSON to JSON
 def data_to_json(data):
     return dumps(data)
+
+# Translate JSON to GeoJSON
+def json_to_geojson(json):
+    geojson = {
+      "type": "Feature",
+      "properties": {
+        "title": json["layer"],
+        "description": json["value"]
+      },
+      "geometry": {
+        "coordinates": [
+          json["location"]["lat"],
+          json["location"]["long"]
+        ],
+        "type": "Point"
+      }
+    }
+    
+    return geojson
