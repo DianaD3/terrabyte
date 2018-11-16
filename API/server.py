@@ -67,12 +67,16 @@ def insert_multiple():
 
 @app.route('/ml/forecasting', methods=["POST"])
 def forecasting():
-    data = request.get_json()
-    data = np.array(data['input'],dtype=np.float)
+    data = request.get_json()['input']
     output = ml.forecast(data, int(0.1*len(data)))
     return prepare.data_to_json({
         'output': output
     })
+
+@app.route('/ml/anomaly', methods=["POST"])
+def anomaly():
+    data = request.get_json()['input']
+    output = ml.anomaly_detection(data)
 # run the app
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
