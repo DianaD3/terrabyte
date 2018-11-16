@@ -66,7 +66,7 @@ def insert_multiple():
         return 'Error'
 
 @app.route('/ml/forecasting', methods=["POST"])
-def forecasting:
+def forecasting():
     data = request.get_json()['input']
     output = ml.forecast(data, 0.1*len(data))
     return prepare.data_to_json({
