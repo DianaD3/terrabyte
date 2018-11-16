@@ -38,15 +38,13 @@ def get_layer_by_time(layer_name, datestart, timestart, datestop, timestop):
 @app.route('/get/layers')
 def get_layers():
     data = get.get_collection()
-    layers = []
-    for row in data['pinpoints']:
-        layers.append(row['layer'])
-    layers = set(layers)
-    ret_val = {
+    layers = {
         'layers': list()
     }
-    ret_val['layers'] = np.append(ret_val['layers'],layers)
-    return prepare.data_to_json(ret_val)
+    for row in data['pinpoints']:
+        layers['layers'].append(row['layer'])
+    layers['layers'] = set(layers['layers'])
+    return prepare.data_to_json(layers)
 
 @app.route('/insert/single', methods=['POST'])
 def insert_single():
