@@ -25,6 +25,7 @@ def get_layer_by_time(layer_name, datestart, timestart, datestop, timestop):
     stop = datestop + " " + timestop
     json_data = get.get_layer_by_timestamp(str(layer_name),str(start),str(stop))
     geojson =  {
+        'type': 'FeatureCollection',
         'features': list()
     }
     for point in json_data['pinpoints']:
