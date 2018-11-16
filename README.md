@@ -37,14 +37,31 @@
 }
 ```
 
-**GET** Get pinpoint array based on layer
-
+**GET** <br>
+#### Gets all pinpoints
+```
+/get/collection
+```
+#### Gets all data from a layer
+```
+/get/layer/*layer_name*
+```
+#### Gets all data from a layer at a specific location
+```
+/get/layer/location/*layer_name*/*latmin*/*latmax*/*longmin*/*longmax*
+```
+#### Gets all data from a layer at a specific time
+```
+/get/layer/time/*layer_name*/*datestart*/*timestart*/*datestop*/*timestop*
+```
 ### Web Interface
 ### Advanced Analysis
 
 ## TODO
 ### Day 1
-- Created insert, get, prepare API calls
+- Created insert, get, prepare functions
 - Started working on front-end
 ### Day 2
+- Created API
+- More front-end
 ### Day 3
