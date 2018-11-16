@@ -1,7 +1,9 @@
 from flask import Flask # Flask
 from Terrabyte import get, prepare # our functions
+from flask_cors import CORS
 
 app = Flask(__name__) # init flask
+CORS(app)
 
 @app.route('/') # home roune
 def index():
