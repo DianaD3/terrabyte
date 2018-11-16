@@ -1,4 +1,5 @@
 from flask import Flask # Flask
+from flask import request
 from Terrabyte import get, prepare, insert # our functions
 
 app = Flask(__name__) # init flask
@@ -33,11 +34,12 @@ def get_layer_by_time(layer_name, datestart, timestart, datestop, timestop):
     
     return prepare.data_to_json(geojson)
 
-@app.route('/insert/single', method=['POST'])
+@app.route('/insert/single', methods=['POST'])
 def insert_single():
     data = request.get_json()
-    insert.insert_data_point(data['location']['lat'],data['location']['long'],data['value'],data['layer'],data['timestamp'])
-    
+    if insert.insert_data_point(data['location']['lat'],data['location']['long'],data['value'],data['layer'],data['timestamp']):
+    	return 'Inserted'
+    return 'Error'
 # run the app
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
