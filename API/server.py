@@ -2,6 +2,7 @@ from flask import Flask # Flask
 from flask import request
 from Terrabyte import get, prepare, insert # our functions
 import numpy as np
+from ML import ml
 
 app = Flask(__name__) # init flask
 
@@ -52,6 +53,25 @@ def insert_single():
     if insert.insert_data_point(data['location']['lat'],data['location']['long'],data['value'],data['layer'],data['timestamp']):
     	return 'Inserted'
     return 'Error'
+
+@app.route('/insert/multiple', methods=['POST'])
+def insert_multiple():
+    data = request.get_json()
+    insert_data = []
+    for row in data['pinpoints']:
+        insert_data = prepare.prepare_points(insert_data, row['location']['lat'], row['location']['long'], row['value'], row['layer'],row['timestamp'])
+    if insert.insert_many_points(insert_data):
+        return 'Insert'
+    else:
+        return 'Error'
+
+@app.route('/ml/forecasting', methods=["POST"])
+def forecasting:
+    data = request.get_json()['input']
+    output = ml.forecast(data)
+    return prepare.data_to_json({
+        'output': output
+    })
 # run the app
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
