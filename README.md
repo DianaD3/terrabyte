@@ -51,6 +51,8 @@
 /get/layer/location/*layer_name*/*latmin*/*latmax*/*longmin*/*longmax*
 ```
 #### Gets all data from a layer at a specific time
+datestart/datestop - expects a date in the format yyyy-mm-dd <br>
+timestart/timestop - expects an hour in the format hh:mm:ss
 ```
 /get/layer/time/*layer_name*/*datestart*/*timestart*/*datestop*/*timestop*
 ```
