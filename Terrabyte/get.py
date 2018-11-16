@@ -5,46 +5,53 @@ client = MongoClient(json.load(open('./config.json'))['endpoint'])
 
 # API call for visualizing the whole mongo db
 def visualize_mongo():
+    # create return dict
+    return_dict = {
+        'pinpoints': list()
+    }
     # find all databases
     for db_name in client.list_database_names():
-        # print current databse
-        print("db:", db_name)
+        # select current databse
         db = client[db_name]
         # find all collections
         for col_name in db.command("listCollections")['cursor']['firstBatch']:
-            # select the collection name
+            # find the collection name
             col_name = col_name['name']
-            # print currect collection
-            print("col:", col_name)
+            # select collection
             col = db[col_name]
             # print all the contents inside the collection
             for data in col.find({}):
-                print(data)
+                return_dict['pinpoints'].append(data)
+    return return_dict
 
 # API call for visualizing a single database
 def visualize_database(database):
-    # print selected database
-    print("db:", database)
+    # create return dict
+    return_dict = {
+        'pinpoints': list()
+    }
+    # select database
     db = client[database]
     # find all collections
     for col_name in db.command("listCollections")['cursor']['firstBatch']:
         # select the collection name
         col_name = col_name['name']
-        # print currect collection
-        print("col:", col_name)
+        # select collection
         col = db[col_name]
-        # print all the contents inside the collection
+        # save all the contents inside the collection
         for data in col.find({}):
-            print(data)
+            return_dict['pinpoints'].append(data)
+    return return_dict
             
 # API call to visualize a single collection from a database
 def visualize_collection(database,collection):
-    # print selected database
-    print("db:", database)
+    # create return dict
+    return_dict = {
+        'pinpoints': list()
+    }
     db = client[database]
-    # print selected collection
-    print("col:", collection)
     col = db[collection]
     # print all the contents inside the collection
     for data in col.find({}):
-        print(data)
+        return_dict['pinpoints'].append(data)
+    return return_dict
