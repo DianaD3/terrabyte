@@ -47,8 +47,8 @@ def data_to_json(data):
 def json_to_geojson(json):
     geojson = {
       "type": "Feature",
-      "properties": {
-        "title": json["layer"],
+      "property": {
+        "name": json["layer"],
         "description": json["value"]
       },
       "geometry": {
