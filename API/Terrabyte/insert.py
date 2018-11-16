@@ -5,7 +5,7 @@ import json # json
 # create the mongo client
 client = MongoClient(json.load(open('./config.json'))['endpoint'])
 
-# API call for inserting a single data point
+# function for inserting a single data point
 def insert_data_point(latitude, longitude, value, layer, timestamp=None):
     # connect to a database
     db = client['admin']
