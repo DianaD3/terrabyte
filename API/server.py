@@ -79,7 +79,7 @@ def anomaly():
     output = ml.anomaly_detection(data)
     
     return prepare.data_to_json({
-        'output': *output
+        'output': list(output)
     })
 # run the app
 if __name__ == "__main__":
