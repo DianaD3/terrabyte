@@ -1,6 +1,7 @@
 from flask import Flask # Flask
 from flask import request
 from Terrabyte import get, prepare, insert # our functions
+import numpy as np
 
 app = Flask(__name__) # init flask
 
@@ -33,6 +34,19 @@ def get_layer_by_time(layer_name, datestart, timestart, datestop, timestop):
         geojson['features'].append(prepare.json_to_geojson(point))
     
     return prepare.data_to_json(geojson)
+
+@app.route('/get/layers')
+def get_layers():
+    data = get.get_collection()
+    layers = []
+    for row in data['pinpoints']:
+        layers.append(row['layer'])
+    layers = set(layers)
+    ret_val = {
+        'layers': list()
+    }
+    ret_val['layers'] = np.append(ret_val['layers'],layers)
+    return prepare.data_to_json(ret_val)
 
 @app.route('/insert/single', methods=['POST'])
 def insert_single():
