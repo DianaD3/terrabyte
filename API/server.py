@@ -67,7 +67,7 @@ def insert_multiple():
 
 @app.route('/ml/forecasting', methods=["POST"])
 def forecasting():
-    data = request.get_json()['input']
+    data = np.array(request.get_json()['input'],dtype=np.float)
     output = ml.forecast(data, 0.1*len(data))
     return prepare.data_to_json({
         'output': output
