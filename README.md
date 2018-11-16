@@ -44,5 +44,7 @@
 
 ## TODO
 ### Day 1
+- Created insert, get, prepare API calls
+- Started working on front-end
 ### Day 2
 ### Day 3

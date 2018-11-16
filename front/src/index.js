@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import mapboxgl from 'mapbox-gl'
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGlhbmFkMyIsImEiOiJjam9qdTVpODUwOGQ2M2xwanBrcnNrczdoIn0.17CYLLGtE45Y3rkNkSCSSA';
 
 class Application extends React.Component {
 
@@ -22,7 +22,9 @@ class Application extends React.Component {
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/dark-v9',
       center: [lng, lat],
-      zoom
+      zoom,
+      pitchWithRotate: false,
+      touchZoomRotate: false
     });
 
     map.on('move', () => {
@@ -34,7 +36,20 @@ class Application extends React.Component {
         zoom: map.getZoom().toFixed(2)
       });
     });
+
+    /*transformRequest: (url, resourceType)=> {
+      if(resourceType === 'Source' && url.startsWith('http://myHost')) {
+        return {
+         url: url.replace('http', 'https'),
+         headers: { 'mycustom-header': true},
+         credentials: 'include'  // Include cookies for cross-origin requests
+       }
+      }
+    };*/
+  
   }
+
+  
 
   render() {
     const { lng, lat, zoom } = this.state;
