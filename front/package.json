@@ -8,8 +8,13 @@
     "react-scripts": "^1.0.10"
   },
   "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.4.1",
+    "cors": "^2.8.5",
+    "express-fileupload": "^1.0.0",
     "mapbox-gl": "^0.39.1",
     "react": "^15.5.0",
-    "react-dom": "^15.5.0"
+    "react-dom": "^15.5.0",
+    "react-map-gl": "^4.0.1",
+    "react-map-gl-geocoder": "^1.4.5"
   }
 }
