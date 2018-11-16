@@ -1,3 +1,3 @@
 {
-    "endpoint": "mongodb://"
+    "endpoint": "mongodb://terrabyte:LmM8urdNrpl8kLkk4juzGqXAwm1GPu5AplbPfpoz18Z4JV9XJPt7c9hqj7Rsp29jq4fO2sT7qyy3OhTRtOq6QA==@terrabyte.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
 }

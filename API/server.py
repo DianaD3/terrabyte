@@ -1,9 +1,7 @@
 from flask import Flask # Flask
 from Terrabyte import get, prepare # our functions
-from flask_cors import CORS
 
 app = Flask(__name__) # init flask
-CORS(app)
 
 @app.route('/') # home roune
 def index():
@@ -37,4 +35,4 @@ def get_layer_by_time(layer_name, datestart, timestart, datestop, timestop):
 
 # run the app
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0")
