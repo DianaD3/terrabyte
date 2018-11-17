@@ -27,7 +27,7 @@ import Button from '@material-ui/core/Button';
 import logo from './logo.svg';
 import './App.css';
 
-
+const url = '40.113.148.40:5000'
 const data = require('./heatmapData.json');
 const data2 = require('./data-test.json');
 const { token, mapStyles } = require('./config.json');
@@ -133,14 +133,14 @@ class App extends PureComponent {
 
   getData() {
 
-    axios.get(`http://104.45.14.65:5000/get/layer/time/${this.state.selectedLayer}/${this.state.selectedStartDate}/00:00:00/${this.state.selectedEndDate}/00:00:00`, {crossdomain: true })
+    axios.get(`http://${url}/get/layer/time/${this.state.selectedLayer}/${this.state.selectedStartDate}/00:00:00/${this.state.selectedEndDate}/00:00:00`, {crossdomain: true })
       .then(res => {
         const response = res.data;
         this.setState({ layerData: response });
       })
   }
   componentDidMount() {
-    axios.get(`http://104.45.14.65:5000/get/layers`, {crossdomain: true })
+    axios.get(`http://${url}/get/layers`, {crossdomain: true })
       .then(res => {
         const response = res.data;
         this.setState({ layers: response.layers });
