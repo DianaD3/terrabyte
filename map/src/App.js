@@ -128,13 +128,14 @@ class App extends PureComponent {
     this.handleLayerChange = this.handleLayerChange.bind(this);
     this.handleStartDateChange = this.handleStartDateChange.bind(this);
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
+    this.getData = this.getData.bind(this);
   }
 
-  getData(layer) {
-    axios.get(`http://104.45.14.65:5000/get/layer/time/${layer || this.state.selectedLayer}/${this.state.selectedStartDate}/00:00:00/${this.state.selectedEndDate}/00:00:00`, {crossdomain: true })
+  getData() {
+
+    axios.get(`http://104.45.14.65:5000/get/layer/time/${this.state.selectedLayer}/${this.state.selectedStartDate}/00:00:00/${this.state.selectedEndDate}/00:00:00`, {crossdomain: true })
       .then(res => {
         const response = res.data;
-        console.log('data',response);
         this.setState({ layerData: response });
       })
   }
@@ -142,7 +143,6 @@ class App extends PureComponent {
     axios.get(`http://104.45.14.65:5000/get/layers`, {crossdomain: true })
       .then(res => {
         const response = res.data;
-        console.log(response);
         this.setState({ layers: response.layers });
       })
   }
@@ -164,16 +164,14 @@ class App extends PureComponent {
   }
 
   handleLayerChange = (event) => {
-    console.log('event', event);
     this.setState({selectedLayer: event.target.value });
-    this.getData(event.target.value );
   };
 
-  handleStartDateChange = date => {
-    this.setState({ selectedStartDate: date });
+  handleStartDateChange = (event) => {
+    this.setState({ selectedStartDate: event.target.value });
   };
-  handleEndDateChange = date => {
-    this.setState({ selectedEndDate: date });
+  handleEndDateChange = (event) => {
+    this.setState({ selectedEndDate: event.target.value });
   };
 
 
@@ -241,6 +239,7 @@ class App extends PureComponent {
                 id="date"
                 type="date"
                 value={this.state.selectedStartDate}
+                onChange={this.handleStartDateChange}
                 className={classes.textField}
                 InputLabelProps={{
                   shrink: true,
@@ -255,6 +254,7 @@ class App extends PureComponent {
                 id="date"
                 type="date"
                 value={this.state.selectedEndDate}
+                onChange={this.handleEndDateChange}
                 className={classes.textField}
                 InputLabelProps={{
                   shrink: true,
