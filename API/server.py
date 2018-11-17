@@ -1,10 +1,12 @@
 from flask import Flask # Flask
 from flask import request
+from flask_cors import CORS
 from Terrabyte import get, prepare, insert # our functions
 import numpy as np
 from ML import ml
 
 app = Flask(__name__) # init flask
+CORS(app)
 
 @app.route('/') # home roune
 def index():
