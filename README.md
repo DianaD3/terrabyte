@@ -1,6 +1,6 @@
 # Terrabyte
 
-!()[https://github.com/paubric/terrabyte/blob/master/Terrabyte.png]
+![](https://github.com/paubric/terrabyte/blob/master/Terrabyte.png)
 
 ## Main Components
 ### Database
